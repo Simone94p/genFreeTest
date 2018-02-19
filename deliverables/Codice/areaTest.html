@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="AlterVista - Editor HTML"/>
+  <title>Area Amministratore</title>
+  
+    <style>
+    p { 
+    margin-top: 50pt;
+    margin-bottom: 20pt;
+    margin-left: 200pt;
+    margin-right: 200pt;
+    border:solid 5px;
+    text-align:center;
+    background-color: #FF831C;
+    border-color: #54BAE2;
+    }
+    ul {
+    font-family: Verdana, sans-serif;
+    font-size: 11px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+li {
+    background-color: #FF831C;
+    border-bottom: 5px solid #54BAE2;
+    display: block;
+    width: 150px;
+    height: 30px;
+    margin: 2px;
+    float: left; /* elementi su singola riga */
+}
+a
+{
+color: #fff;
+    display: block;
+    font-weight: bold;
+    line-height: 30px;
+    padding-left: 15px;
+    text-decoration: none;
+    width: 135px; 
+    height: 30px;
+}
+ul#menu li.active, ul#menu li:hover {
+    background-color: #54BAE2;
+    border-bottom: 5px solid #FF831C;
+}
+  </style>
+  <script>
+  var segnale = "false";
+  function sbloccaPulsante()
+  {
+    var cMinuti = document.getElementById("minuti").value;
+    var cOre = document.getElementById("ore").value;
+    var cGiorni = document.getElementById("giorni").value;
+    var cMese = document.getElementById("mesi").value;
+    var cAnno = document.getElementById("anno").value;
+    var cPassword = document.getElementById("passwordTest").value;
+    var cNDomande = document.getElementById("numeroDomande").value;
+    var cDurata = document.getElementById("durata").value;
+    
+      if(cMinuti == "" || cOre == "" || cGiorni == "" || cMese == "" || cAnno == "" || cPassword == "" || cNDomande == "" || cDurata == "")
+      {
+         document.getElementById("conferma").disabled = true;
+      }
+      else
+      {
+         document.getElementById("conferma").disabled = false;
+      }
+      
+      
+  }
+  
+  
+  function controllaPassword(value)
+  {
+    var valore = value;
+    
+    if(valore.length <= 5)
+    {
+       alert("Devi inserire almeno 6 caratteri");
+       document.getElementById("passwordTest").value = "";
+    }
+   
+       sbloccaPulsante();
+    
+  }
+  function controlla(component)
+  {
+     var valore = component.value;
+     if(valore.length != 2)
+     {
+        alert("Devi inserire esattamente due cifre");
+        component.value = "";
+        sbloccaPulsante();
+        return;
+     }
+     var numero;
+     if(isNaN(parseInt(valore)))
+     {
+        alert("Devi inserire valori numerici e non caratteri");
+        component.value = "";
+        sbloccaPulsante();
+        return;
+     }
+     
+     sbloccaPulsante();
+  }
+  
+  function controllaNumeroDomande(value)
+  {
+     var valore = value;
+     
+     if(isNaN(parseInt(valore)))
+     {
+        alert("Devi inserire valori numerici e non caratteri");
+        document.getElementById("numeroDomande").value = "";
+     }
+     else
+     {
+         var numero = parseInt(valore);
+         if(numero >= 61)
+         {
+             alert("Non possono esserci più di 60 domande");
+             document.getElementById("numeroDomande").value = "";
+         }
+     }
+     
+     sbloccaPulsante();
+     
+  }
+  
+  </script>
+</head>
+<body style = "background-image: url(test2.jpg); background-size:1500px; color:#ffffff;">
+
+  <ul id="menu">
+    <li><a href="areaProfessore.html">Home</a></li>
+    <li><a href="areaTest.html">crea test</a></li>
+    <li><a href="gestioneTest.html"> gestione test </a></li>
+    <li><a href="paginaTestSvolti.html">test svolti </a></li>
+    <li><a href="cambiaPasswordProfessore.html">cambia password </a> </li>
+    <li><a href="http://www.html.it">Logout</a></li>
+</ul>
+<br> <br> <br>
+
+
+  <form action = "creaTest.php" method = "post">
+  <p>
+  <br> <b> Crea un test </b> <br> <br>
+  Titolo del test: <input type = "text" name = "titoloTest" style = "margin-left:20pt; margin-top:10pt"> <br>
+  Durata del test: (in minuti) <input type = "text" style = "margin-left:73pt; margin-top:10pt" name = "minutiDurata" size = "1" id = "durata" onblur = "controlla(this)"> <br>
+  N. di risposte per domanda:  
+  <select name = "numeroRisposte" style = "margin-left:82pt; margin-top:10pt">
+  <option value = "3"> 3
+  <option value = "4"> 4
+  <option value = "5"> 5
+  <option value = "6"> 6
+  </select> <br>
+  Inizio del test:(mm/hh/gg/MM/aa) <input type = "text" name = "minuti" style = "margin-top:10pt" size = "1" id = "minuti" onblur = "controlla(this)">/
+  <input type = "text" size = "1" name = "ore" id = "ore" onblur = "controlla(this)">/
+  <input type = "text" size = "1" name = "giorni" id = "giorni" onblur = "controlla(this)">/
+  <input type = "text" size = "1" name = "mesi" id = "mesi" onblur = "controlla(this)"> /
+  <input type = "text" size = "1" name = "anno" id = "anno" onblur = "controlla(this)"> <br>
+  N. di domande: <input type = "text" style = "margin-left:137pt; margin-top:10pt" name = "numeroDomande" size = "1" id = "numeroDomande" onblur = "controllaNumeroDomande(this.value)"> <br>
+  Password di accesso: <input type = "text" style = "margin-left:50pt; margin-top:10pt" name = "passwordTest" id = "passwordTest" onblur = "controllaPassword(this.value)" size = "9"> 
+  <br>
+  <input type = "submit" disabled id = "conferma" value = "conferma" style = "margin-top:10pt;">
+  </p>
+  </form>
+ 
+
+</body>
+</html>

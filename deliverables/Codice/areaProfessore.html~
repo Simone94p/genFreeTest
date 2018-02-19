@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="AlterVista - Editor HTML"/>
+  <title></title>
+   <style>
+    p { 
+    margin-top: 50pt;
+    margin-bottom: 20pt;
+    margin-left: 200pt;
+    margin-right: 200pt;
+    border:solid 5px;
+    text-align:center;
+    background-color: #FF831C;
+    border-color: #54BAE2;
+    }
+    ul {
+    font-family: Verdana, sans-serif;
+    font-size: 11px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+li {
+    background-color: #FF831C;
+    border-bottom: 5px solid #54BAE2;
+    display: block;
+    width: 150px;
+    height: 30px;
+    margin: 2px;
+    float: left; /* elementi su singola riga */
+}
+a
+{
+color: #fff;
+    display: block;
+    font-weight: bold;
+    line-height: 30px;
+    padding-left: 15px;
+    text-decoration: none;
+    width: 135px; 
+    height: 30px;
+}
+ul#menu li.active, ul#menu li:hover {
+    background-color: #54BAE2;
+    border-bottom: 5px solid #FF831C;
+}
+  </style>
+</head>
+<body style = "background-image: url(test2.jpg); background-size:1500px; color:#ffffff;">
+<ul id="menu">
+    <li><a href="areaProfessore.html">Home</a></li>
+    <li><a href="areaTest.html"> Crea test </a></li>
+    <li><a href="gestioneTest.html"> gestione test </a></li>
+    <li><a href="paginaTestSvolti.html">test svolti </a></li>
+    <li><a href="cambiaPasswordProfessore.html">cambia password </a> </li>
+    <li><a href="index.html">Logout</a></li>
+</ul> <br> <br>
+  <p> <b> Ti trovi nella tua area riservata. </b> </p>
+
+</body>
+</html>

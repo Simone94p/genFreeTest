@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="AlterVista - Editor HTML"/>
+  <title></title>
+
+  <style>
+    p { 
+    margin-top: 50pt;
+    margin-bottom: 20pt;
+    margin-left: 200pt;
+    margin-right: 200pt;
+    border:solid 5px;
+    text-align:center;
+    background-color: #FF831C;
+    border-color: #54BAE2;
+    }
+    ul {
+    font-family: Verdana, sans-serif;
+    font-size: 11px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+li {
+    background-color: #FF831C;
+    border-bottom: 5px solid #54BAE2;
+    display: block;
+    width: 150px;
+    height: 30px;
+    margin: 2px;
+    float: left; /* elementi su singola riga */
+}
+a
+{
+color: #fff;
+    display: block;
+    font-weight: bold;
+    line-height: 30px;
+    padding-left: 15px;
+    text-decoration: none;
+    width: 135px; 
+    height: 30px;
+}
+ul#menu li.active, ul#menu li:hover {
+    background-color: #54BAE2;
+    border-bottom: 5px solid #FF831C;
+}
+  </style>
+  <script>
+  var p = "";
+  function visualizzaSingolaProva()
+  {
+      var http = null;
+     if(window.XMLHttpRequest)
+     {
+        http = new XMLHttpRequest();
+     }
+     else if(window.ActiveXObject)
+     {
+       http = new ActiveXObject("Microsoft.XMLHTTP");
+     }
+        p = document.getElementById("passwordProva").value;
+        http.onreadystatechange = requestStateHandler;
+        http.open("GET", 'recuperaSingolaProva.php?password='+p, true);
+        http.send(null);
+        
+     
+     function requestStateHandler()
+     {
+        if(http.readyState == 4 && http.status == 200)
+        {
+           var string = http.responseText;
+           var vettore = string.split(' ');
+           var i = 0;
+           while(i < vettore.length)
+           {
+               document.getElementById("riempi"+i).innerHTML = ""+vettore[i];
+               i++;
+           }
+           var j = 4;
+           while(j <= 23)
+           {
+              document.getElementById("riempi"+j).innerHTML = " ";
+              j++;
+           }
+           
+        }
+     }
+  }
+  
+  function visualizzaProveFatte()
+  {
+     var http = null;
+     if(window.XMLHttpRequest)
+     {
+        http = new XMLHttpRequest();
+     }
+     else if(window.ActiveXObject)
+     {
+       http = new ActiveXObject("Microsoft.XMLHTTP");
+     }
+        http.onreadystatechange = requestStateHandler;
+        http.open("GET", 'recuperaProveSvolte.php', true);
+        http.send(null);
+        
+     
+     function requestStateHandler()
+     {
+        if(http.readyState == 4 && http.status == 200)
+        {
+           var string = http.responseText;
+           var vettore = string.split(' ');
+           var i = 0;
+           while(i < vettore.length)
+           {
+               document.getElementById("riempi"+i).innerHTML = ""+vettore[i];
+               i++;
+           }
+           
+        }
+     }
+  }
+  </script>
+</head>
+<body style = "background-image: url(test2.jpg); background-size:1500px; color:#ffffff;">
+<ul id="menu">
+    <li><a href="areaStudente.html">Home</a></li>
+    <li><a href="elencoTest.php"> Elenco dei test </a></li>
+    <li><a href="proveUtente.html"> Prove svolte </a></li>
+    <li><a href="cambiaPasswordUtente.html"> Cambia password </a></li>
+    <li><a href="home.html">Logout</a></li>
+</ul> <br> <br>
+ <p> Visualizza la lista di tutte le prove svolte <input type = "button" value = "Visualizza" onClick = "visualizzaProveFatte()"> </p> <br>
+ <p> Visualizza una singola prova <input type = "text" id = "passwordProva" value = "inserisci la password della prova che vuoi visualizzare"><input type = "button" value = "Visualizza" onClick = "visualizzaSingolaProva()"> </p><br>
+ <table align = "center" style = "color:black;">
+ <tr> <td> <b> Prova </b> </td> <td> <b> Punteggio </b> </td> <td> <b> Esito </b> </td> <td> <b> N. risposte esatte </b> </td>  </tr>
+ <tr> <td id = "riempi0" style = "text-align:center;"> </td> <td id = "riempi1" style = "text-align:center;"> </td> <td id = "riempi2" style = "text-align:center;"> </td> <td id = "riempi3" style = "text-align:center;"> </td> </tr>
+ <tr> <td id = "riempi4" style = "text-align:center;"> </td> <td id = "riempi5" style = "text-align:center;"> </td> <td id = "riempi6" style = "text-align:center;"> </td> <td id = "riempi7" style = "text-align:center;"> </td> </tr>
+<tr> <td id = "riempi8" style = "text-align:center;"> </td> <td id = "riempi9" style = "text-align:center;"> </td> <td id = "riempi10" style = "text-align:center;"> </td> <td id = "riempi11" style = "text-align:center;"> </td> </tr>
+ <tr> <td id = "riempi12" style = "text-align:center;"> </td> <td id = "riempi13" style = "text-align:center;"> </td> <td id = "riempi14" style = "text-align:center;"> </td> <td id = "riempi15" style = "text-align:center;"> </td> </tr>
+<tr> <td id = "riempi16" style = "text-align:center;"> </td> <td id = "riempi17" style = "text-align:center;"> </td> <td id = "riempi18" style = "text-align:center;"> </td> <td id = "riempi19" style = "text-align:center;"> </td> </tr>
+ <tr> <td id = "riempi20" style = "text-align:center;"> </td> <td id = "riempi21" style = "text-align:center;"> </td> <td id = "riempi22" style = "text-align:center;"> </td> <td id = "riempi23" style = "text-align:center;"> </td> </tr>
+ </table>
+  
+
+</body>
+</html>
